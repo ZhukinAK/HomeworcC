@@ -1,1 +1,3 @@
-# HomeworcC
+# Awsome homework
+
+Variant #1
