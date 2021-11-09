@@ -20,7 +20,7 @@ double coordy(string str) {
 int main()
 {
 	ifstream i_file;
-	i_file.open("D:\\in.txt");
+	i_file.open("in.txt");
 	int a = 0;
 	double x0;
 	double y0;
