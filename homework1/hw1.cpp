@@ -49,7 +49,7 @@ int main()
 			dlina = abs((x0 * y - y0 * x) / sqrt(y0 * y0 + x0 * x0));
 			if (x0 * y - y0 * x > 0)
 			{
-				if (dl < dlina)
+				if (dl <= dlina)
 				{
 					dl = dlina;
 					mleftx = x;
@@ -58,7 +58,7 @@ int main()
 			}
 			else
 			{
-				if (dr < dlina)
+				if (dr <= dlina)
 				{
 					dr = dlina;
 					mrightx = x;
