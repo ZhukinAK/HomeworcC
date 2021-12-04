@@ -9,17 +9,17 @@
 #include <typeinfo>
 using namespace std;
 
-void take_x(string str) {
+double take_x(string str) {
 	
 	int probel = str.find(" ");
 	double x= = stod(str.substr(0, probel));
-	
+	return x;
 }
 
-void take_y(string str) {
+double take_y(string str) {
 	int probel = str.find(" ");
 	double y = stod(str.substr(probel + 1, str.length()));
-	
+	return y	
 }
 
 int which_sector(double x,vector<double> X) {
