@@ -9,18 +9,17 @@
 #include <typeinfo>
 using namespace std;
 
-void take_x(string str, double& b) {
-	if(str.length()>1){
+void take_x(string str) {
+	
 	int probel = str.find(" ");
-	b = stod(str.substr(0, probel));
-	}
+	double x= = stod(str.substr(0, probel));
+	
 }
 
-void take_y(string str,double& c) {
-	if(str.length()>1){
+void take_y(string str) {
 	int probel = str.find(" ");
-	c = stod(str.substr(probel + 1, str.length()));
-	}
+	double y = stod(str.substr(probel + 1, str.length()));
+	
 }
 
 int which_sector(double x,vector<double> X) {
@@ -108,10 +107,8 @@ int main(int argc, char** argv)
 		}
 		else
 		{
-			b=take_x(str);
-			c=take_y(str);
-			X.push_back(b);
-			H.push_back(c);
+			X.push_back(str);
+			H.push_back(str);
 		}
 	}   
 	while (y>0)
