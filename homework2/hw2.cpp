@@ -47,6 +47,7 @@ void phys1(vector<double> X, vector<double> H, double t, double dt, double& y, d
 			vx = -vx;
 			x = X[sector] - 0.0000000001;
 		}
+	/*	cout << "R" << x << "   " << y << "  " << sector << endl;*/
 	}
 }
 
@@ -63,26 +64,25 @@ void phys2(vector<double> X, vector<double> H, double t, double dt, double& y, d
 			vx = -vx;
 			x = X[sector - 1] + 0.00000000001;
 		}
+	/*cout << "L" << x << "   " << y << "  " << sector << endl;*/
 	}
 }
 
-
 int main(int argc, char** argv)
 {
-      if(argc < 2 || argc > 2){
-        cout << "аргументов нет или их больше чем мы ожидаем"<< endl;
-    }
-    ifstream i_file;
-    i_file.open(argv[1]);
-      
+	if (argc < 2 || argc > 2) {
+		cout << "аргументов нет или их больше чем мы ожидаем" << endl;
+	}
+	ifstream i_file;
+	i_file.open(argv[1]);
 	int a = 0;
 	//параметры точки
-	double y;
-	double x;
-	double vx;
-	double vy;
-	//сектор нахождения
-	int sector;
+	double y=0;
+	double x=0;
+	double vx=0;
+	double vy=0;
+	//сектор падения
+	int sector=0;
 	//параметры столбов
 	vector<double> X;
 	vector<double> H;
@@ -95,13 +95,14 @@ int main(int argc, char** argv)
 	{
 		if (a == 0)
 		{
-			y = stod(str);
+			y = stoi(str);
 			a = 1;
 		}
 		else if (a==1)
 		{
 			vx = take_x(str);
 			vy = take_y(str);
+			a = 2;
 		}
 		else
 		{
@@ -109,13 +110,19 @@ int main(int argc, char** argv)
 			H.push_back(take_y(str));
 		}
 	}   
-	while (y)
+	cout << y << endl;
+	cout << vx << "  " << vy << endl;
+	cout << X[0] <<"  "<<H[0]<< endl;
+	cout << X[1] << "  " << H[1] << endl;
+	cout << X[2] << "  " << H[2] << endl;
+	cout << X[3] << "  " << H[3] << endl;
+	while (y>0)
 	{
-		which_sector(x,X);
-		if (vx >= 0) phys1(X,H,t,dt,y,x,vy,vx,sector);
+		sector=which_sector(x,X);
+		if (vx >= 0) phys1(X, H, t, dt, y, x, vy, vx, sector);
 		if (vx < 0) phys2(X, H, t, dt, y, x, vy, vx, sector);
 	}
-	which_sector(x, X);
+	sector=which_sector(x, X);
 	cout << sector;
 	return 0;
 }
