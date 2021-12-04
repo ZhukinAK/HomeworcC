@@ -104,8 +104,10 @@ int main(int argc, char** argv)
 		}
 		else
 		{
+			if(str.length()>1){
 			X.push_back(take_x(str));
 			H.push_back(take_y(str));
+			}
 		}
 	}   
 	while (y>0)
