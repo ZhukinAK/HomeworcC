@@ -9,20 +9,18 @@
 #include <typeinfo>
 using namespace std;
 
-double take_x(string str) {
+void take_x(string str, double& b) {
 	if(str.length()>1){
 	int probel = str.find(" ");
-	double x = stod(str.substr(0, probel));
+	b = stod(str.substr(0, probel));
 	}
-	return x;
 }
 
-double take_y(string str) {
+void take_y(string str,double& c) {
 	if(str.length()>1){
 	int probel = str.find(" ");
-	double y = stod(str.substr(probel + 1, str.length()));
+	c = stod(str.substr(probel + 1, str.length()));
 	}
-	return y;
 }
 
 int which_sector(double x,vector<double> X) {
@@ -78,6 +76,8 @@ int main(int argc, char** argv)
 	ifstream i_file;
 	i_file.open(argv[1]);
 	int a = 0;
+	double b=0;
+	double c=0;
 	//параметры точки
 	double y=0;
 	double x=0;
@@ -108,8 +108,10 @@ int main(int argc, char** argv)
 		}
 		else
 		{
-			X.push_back(take_x(str));
-			H.push_back(take_y(str));
+			b=take_x(str);
+			c=take_y(str);
+			X.push_back(b);
+			H.push_back(c);
 		}
 	}   
 	while (y>0)
