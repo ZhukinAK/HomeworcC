@@ -10,16 +10,15 @@
 using namespace std;
 
 double take_x(string str) {
-	
 	int probel = str.find(" ");
-	double x= = stod(str.substr(0, probel));
+	double x = stod(str.substr(0, probel));
 	return x;
 }
 
 double take_y(string str) {
 	int probel = str.find(" ");
 	double y = stod(str.substr(probel + 1, str.length()));
-	return y	
+	return y;
 }
 
 int which_sector(double x,vector<double> X) {
@@ -75,8 +74,6 @@ int main(int argc, char** argv)
 	ifstream i_file;
 	i_file.open(argv[1]);
 	int a = 0;
-	double b=0;
-	double c=0;
 	//параметры точки
 	double y=0;
 	double x=0;
@@ -107,8 +104,8 @@ int main(int argc, char** argv)
 		}
 		else
 		{
-			X.push_back(str);
-			H.push_back(str);
+			X.push_back(take_x(str));
+			H.push_back(take_y(str));
 		}
 	}   
 	while (y>0)
