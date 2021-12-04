@@ -47,7 +47,6 @@ void phys1(vector<double> X, vector<double> H, double t, double dt, double& y, d
 			vx = -vx;
 			x = X[sector] - 0.0000000001;
 		}
-	/*	cout << "R" << x << "   " << y << "  " << sector << endl;*/
 	}
 }
 
@@ -64,7 +63,6 @@ void phys2(vector<double> X, vector<double> H, double t, double dt, double& y, d
 			vx = -vx;
 			x = X[sector - 1] + 0.00000000001;
 		}
-	/*cout << "L" << x << "   " << y << "  " << sector << endl;*/
 	}
 }
 
