@@ -26,10 +26,8 @@ int which_sector(double x,vector<double> X) {
 	if (x < X.front()) {
 		sector = 0;
 	}
-	else if (x > X.back()) {
-		sector = X.size();
-	} else{
-		for (int i = 1; i < X.size(); ++i) {
+	 else{
+		for (int i = 0; i < X.size(); ++i) {
 			if (x > X[i] && x < X[i + 1]) sector = i+1;
 		}
 	}
@@ -65,10 +63,11 @@ int main(int argc, char** argv)
 {
       if(argc < 2 || argc > 2){
         cout << "аргументов нет или их больше чем мы ожидаем"<< endl;
-    }
+    }else{
     ifstream i_file;
     i_file.open(argv[1]);
-    int a = 0;
+      }
+	int a = 0;
 	//параметры точки
 	double y;
 	double x;
@@ -88,7 +87,7 @@ int main(int argc, char** argv)
 	{
 		if (a == 0)
 		{
-			y = stoi(str);
+			y = stod(str);
 			a = 1;
 		}
 		else if (a==1)
