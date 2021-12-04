@@ -47,7 +47,6 @@ void phys1(vector<double> X, vector<double> H, double t, double dt, double& y, d
 			vx = -vx;
 			x = X[sector] - 0.0000000001;
 		}
-	/*	cout << "R" << x << "   " << y << "  " << sector << endl;*/
 	}
 }
 
@@ -64,7 +63,6 @@ void phys2(vector<double> X, vector<double> H, double t, double dt, double& y, d
 			vx = -vx;
 			x = X[sector - 1] + 0.00000000001;
 		}
-	/*cout << "L" << x << "   " << y << "  " << sector << endl;*/
 	}
 }
 
@@ -110,12 +108,6 @@ int main(int argc, char** argv)
 			H.push_back(take_y(str));
 		}
 	}   
-	cout << y << endl;
-	cout << vx << "  " << vy << endl;
-	cout << X[0] <<"  "<<H[0]<< endl;
-	cout << X[1] << "  " << H[1] << endl;
-	cout << X[2] << "  " << H[2] << endl;
-	cout << X[3] << "  " << H[3] << endl;
 	while (y>0)
 	{
 		sector=which_sector(x,X);
