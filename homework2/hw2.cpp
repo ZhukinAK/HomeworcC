@@ -63,16 +63,11 @@ void phys2(vector<double> X, vector<double> H, double t, double dt, double& y, d
 
 int main(int argc, char** argv)
 {
-    string input_filename;
-
-    if (argc == 2)
-    {
-        input_filename = argv[1];
-    } else {
-        input_filename = "input.txt";
+      if(argc < 2 || argc > 2){
+        cout << "аргументов нет или их больше чем мы ожидаем"<< endl;
     }
-    ifstream i_file(input_filename);
-    
+    ifstream i_file;
+    i_file.open(argv[1]);
     int a = 0;
 	//параметры точки
 	double y;
