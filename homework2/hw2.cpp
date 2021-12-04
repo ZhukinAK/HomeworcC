@@ -5,22 +5,24 @@
 #include <algorithm>
 #include <string>
 #include <cstring>
+#include <cstdlib>
+#include <typeinfo>
 using namespace std;
 
 double take_x(string str) {
 	int probel = str.find(" ");
-	double x = stoi(str.substr(0, probel));
+	double x = stod(str.substr(0, probel));
 	return x;
 }
 
 double take_y(string str) {
 	int probel = str.find(" ");
-	double y = stoi(str.substr(probel + 1, str.length()));
+	double y = stod(str.substr(probel + 1, str.length()));
 	return y;
 }
 
 int which_sector(double x,vector<double> X) {
-	int sector;
+	int sector=0;
 	if (x < X.front()) {
 		sector = 0;
 	}
@@ -28,30 +30,34 @@ int which_sector(double x,vector<double> X) {
 		sector = X.size();
 	} else{
 		for (int i = 1; i < X.size(); ++i) {
-			if (x > X[i] && x < X[i + 1]) sector = i;
+			if (x > X[i] && x < X[i + 1]) sector = i+1;
 		}
 	}
 	return sector;
 }
 
-void phys1(vector<double> X, vector<double> H, double t, double dt, double y, double x, double vy, double vx, double sector) {
+void phys1(vector<double> X, vector<double> H, double t, double dt, double& y, double& x, double& vy, double& vx, double sector) {
 	double g = 9.81;
 	double y1;
 	vy = vy - g * dt;
 	x = x + vx * dt;
 	y1 = y;
 	y = y + vy * dt - g * dt * dt / 2;
-	if (x >= X[sector] && y1<=H[sector]) vx = -vx;
+	if (sector < X.size()) {
+		if (x >= X[sector] && y1 <= H[sector]) vx = -vx;
+	}
 }
 
-void phys2(vector<double> X, vector<double> H, double t, double dt, double y, double x, double vy, double vx, double sector) {
+void phys2(vector<double> X, vector<double> H, double t, double dt, double& y, double& x, double& vy, double& vx, double sector) {
 	double g = 9.81;
 	double y1;
 	vy = vy - g * dt;
 	x = x + vx * dt;
 	y1 = y;
 	y = y + vy * dt - g * dt * dt / 2;
-	if (x <= X[sector-1] && y1 <= H[sector-1]) vx = -vx;
+	if (sector >0) {
+		if (x <= X[sector - 1] && y1 <= H[sector - 1]) vx = -vx;
+	}
 }
 
 
