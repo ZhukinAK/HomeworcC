@@ -28,7 +28,7 @@ int which_sector(double x,vector<double> X) {
 	}
 	 else{
 		for (int i = 0; i < X.size(); ++i) {
-			if (x > X[i] && x < X[i + 1]) sector = i+1;
+			if (x >= X[i]) sector = i+1;
 		}
 	}
 	return sector;
@@ -37,24 +37,34 @@ int which_sector(double x,vector<double> X) {
 void phys1(vector<double> X, vector<double> H, double t, double dt, double& y, double& x, double& vy, double& vx, double sector) {
 	double g = 9.81;
 	double y1;
+	
 	vy = vy - g * dt;
 	x = x + vx * dt;
 	y1 = y;
 	y = y + vy * dt - g * dt * dt / 2;
 	if (sector < X.size()) {
-		if (x >= X[sector] && y1 <= H[sector]) vx = -vx;
+		if (x >= X[sector] && y1 <= H[sector]) {
+			vx = -vx;
+			x = X[sector] - 0.0000000001;
+		}
+	/*	cout << "R" << x << "   " << y << "  " << sector << endl;*/
 	}
 }
 
 void phys2(vector<double> X, vector<double> H, double t, double dt, double& y, double& x, double& vy, double& vx, double sector) {
 	double g = 9.81;
 	double y1;
+
 	vy = vy - g * dt;
 	x = x + vx * dt;
 	y1 = y;
 	y = y + vy * dt - g * dt * dt / 2;
 	if (sector >0) {
-		if (x <= X[sector - 1] && y1 <= H[sector - 1]) vx = -vx;
+		if (x <= X[sector - 1] && y1 <= H[sector - 1]) { 
+			vx = -vx;
+			x = X[sector - 1] + 0.00000000001;
+		}
+	/*cout << "L" << x << "   " << y << "  " << sector << endl;*/
 	}
 }
 
@@ -63,10 +73,10 @@ int main(int argc, char** argv)
 {
       if(argc < 2 || argc > 2){
         cout << "аргументов нет или их больше чем мы ожидаем"<< endl;
-    }else{
+    }
     ifstream i_file;
     i_file.open(argv[1]);
-      }
+      
 	int a = 0;
 	//параметры точки
 	double y;
