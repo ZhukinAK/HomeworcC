@@ -10,14 +10,18 @@
 using namespace std;
 
 double take_x(string str) {
+	if(strlen(str)>1){
 	int probel = str.find(" ");
 	double x = stod(str.substr(0, probel));
+	}
 	return x;
 }
 
 double take_y(string str) {
+	if(strlen(str)>1){
 	int probel = str.find(" ");
 	double y = stod(str.substr(probel + 1, str.length()));
+	}
 	return y;
 }
 
