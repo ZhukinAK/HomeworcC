@@ -110,6 +110,7 @@ int main(int argc, char** argv)
 			}
 		}
 	}   
+	if(X.size()>0){ 
 	while (y>0)
 	{
 		sector=which_sector(x,X);
@@ -117,6 +118,9 @@ int main(int argc, char** argv)
 		if (vx < 0) phys2(X, H, t, dt, y, x, vy, vx, sector);
 	}
 	sector=which_sector(x, X);
-	cout << sector;
+	cout << sector;}
+	else{
+	cout<<0;
+	}
 	return 0;
 }
