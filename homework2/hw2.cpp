@@ -94,6 +94,10 @@ int main(int argc, char** argv)
 		if (a == 0)
 		{
 			y = stoi(str);
+			if(y==2){
+			cout<<a;
+			a=0;
+			}
 			a = 1;
 		}
 		else if (a==1)
@@ -117,6 +121,8 @@ int main(int argc, char** argv)
 		if (vx < 0) phys2(X, H, t, dt, y, x, vy, vx, sector);
 	}
 	sector=which_sector(x, X);
+	if(a>0){
 	cout << sector;
+	}
 	return 0;
 }
