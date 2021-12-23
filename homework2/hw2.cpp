@@ -117,11 +117,6 @@ int main(int argc, char** argv)
 		if (vx < 0) phys2(X, H, t, dt, y, x, vy, vx, sector);
 	}
 	sector=which_sector(x, X);
-	int q=0;
-	if(X[0]==5 && X[1]==6 && H[0]==1 &&H[1]==0.3){
-	cout<<q;}
-	else{
 	cout << sector;
-	}
 	return 0;
 }
